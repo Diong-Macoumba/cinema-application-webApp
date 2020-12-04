@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="col-lg-3" *ngIf="villes">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5>Liste des villes</h5>
+      </div>
+      <div class="panel-body">
+        <ul *ngFor="let v of villes._embedded.villes" class="list-group">
+          <li class="list-group-item"><a (click)="getCinema(v)">{{v.nameVille}}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-9" *ngIf="cinemas">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5>Liste des cinemas</h5>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <ul *ngFor="let c of cinemas._embedded.cinemas" class="list-group">
+            <li class="list-group-item"><a (click)="getSalles(c)">{{c.nameCinema}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default" *ngIf="salles">
+      <div class="panel-heading">
+        <h5>Liste des salles</h5>
+      </div>
+      <div class="panel-body">
+          <ul *ngFor="let s of salles._embedded.salles" class="list-group">
+            <li class="list-group-item"><a>{{s.nameSalle}}</a></li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>
