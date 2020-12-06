@@ -18,7 +18,7 @@
       </div>
       <div class="panel-body">
         <div class="row">
-          <ul *ngFor="let c of cinemas._embedded.cinemas" class="list-group">
+          <ul *ngFor="let c of cinemas._embedded.cinemas" class="list-group nav-pills">
             <li class="list-group-item"><a (click)="getSalles(c)">{{c.nameCinema}}</a></li>
           </ul>
         </div>
@@ -29,9 +29,20 @@
         <h5>Liste des salles</h5>
       </div>
       <div class="panel-body">
-          <ul *ngFor="let s of salles._embedded.salles" class="list-group">
-            <li class="list-group-item"><a>{{s.nameSalle}}</a></li>
-          </ul>
+          <div class="row">
+              <div *ngFor="let s of salles._embedded.salles" class="col-md-6">
+                    <div class="list-group-item">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <a>{{s.nameSalle}}</a>
+                        </div>
+                        <div class="panel-body" *ngIf="s.projections">
+                          <img src="{{cinemaService.host + 'imageFilm/' + s.projections._embedded.projections[0].film.idFilm }}">
+                        </div>
+                      </div>
+                    </div>
+              </div>
+          </div>
       </div>
     </div>
   </div>
