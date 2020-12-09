@@ -37,7 +37,19 @@
                           <a>{{s.nameSalle}}</a>
                         </div>
                         <div class="panel-body" *ngIf="s.projections">
-                          <img src="{{cinemaService.host + 'imageFilm/' + s.projections._embedded.projections[0].film.idFilm }}">
+                          <div class="row">
+                            <div class="col-md-5">
+                              <img src="{{cinemaService.host + 'imageFilm/' + s.projections._embedded.projections[4].film.idFilm }}">
+                            </div>
+                            <div class="col-md-7">
+                              <ul class="list-group">
+                                <li class="list-group-item">Séances :</li>
+                                <li class="list-group-item" *ngFor="let sc of s.projections._embedded.projections">
+                                  {{sc.seance.heureDebut}} => Prix : {{sc.prixProjection}}
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
